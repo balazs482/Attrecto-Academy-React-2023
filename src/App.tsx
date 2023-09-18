@@ -7,7 +7,8 @@ function App() {
 
   const updateCounter = (increase: boolean) => {
     setCounter((currentValue) => {
-      return increase ? currentValue + 1 : currentValue - 1;
+      if (currentValue === 0 && !increase) return 0;
+      else return increase ? currentValue + 1 : currentValue - 1;
     });
   };
 
