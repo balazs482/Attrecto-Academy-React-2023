@@ -4,11 +4,20 @@ import Navbar from "./components/navbar/Navbar";
 
 function App() {
   const [counter, setCounter] = useState(0);
+  const [triedNegative, setTriedNegative] = useState(false);
 
   const updateCounter = (increase: boolean) => {
     setCounter((currentValue) => {
-      if (currentValue === 0 && !increase) return 0;
-      else return increase ? currentValue + 1 : currentValue - 1;
+      if (currentValue === 0) {
+        if(!increase) {
+          setTriedNegative(true);
+          return 0;
+        }
+        else {
+          setTriedNegative(false);
+        }
+      }
+      return increase ? currentValue + 1 : currentValue - 1;
     });
   };
 
@@ -40,6 +49,7 @@ function App() {
               Reset
             </button>
           </div>
+          {triedNegative ? (<p>Can't go below 0.</p>) : null}
         </div>
       </div>
     </div>
