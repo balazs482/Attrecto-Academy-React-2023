@@ -33,7 +33,10 @@ function App() {
             >
               Decrease -
             </button>
-            <button className="btn btn-danger" onClick={() => setCounter(0)}>
+            <button
+              className="btn btn-danger"
+              onClick={() => setCounter(0)}
+            >
               Reset
             </button>
           </div>
