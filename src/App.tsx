@@ -1,43 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/navbar/Navbar";
+import HomePage from "./pages/HomePage/HomePage";
+import UsersPage from "./pages/UsersPage/UsersPage";
+import BadgesPage from "./pages/BadgesPage/BadgesPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
-  const [counter, setCounter] = useState(0);
-
-  const updateCounter = (increase: boolean) => {
-    setCounter((currentValue) => {
-      return increase ? currentValue + 1 : currentValue - 1;
-    });
-  };
-
   return (
     <div className="App">
       <header className="App-header">
         <Navbar />
       </header>
-      <div className="container d-flex justify-content-center">
-        <div className="card bg-white shadow text-center p-4 m-4">
-          <h5>Counter: {counter}</h5>
-          <div className="d-flex justify-content-center flex-wrap gap-2">
-            <button
-              className="btn btn-primary"
-              onClick={() => updateCounter(true)}
-            >
-              Increase +
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => updateCounter(false)}
-            >
-              Decrease -
-            </button>
-            <button className="btn btn-danger" onClick={() => setCounter(0)}>
-              Reset
-            </button>
-          </div>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/badges" element={<BadgesPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }
