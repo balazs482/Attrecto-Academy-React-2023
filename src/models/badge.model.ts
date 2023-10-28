@@ -1,7 +1,7 @@
 export interface UserBadgeModel {
-    name: string;
     id: number;
-    createdAt: Date;
+    name: string;
+    description: string;
     image: string;
-    badges: UserBadgeModel[];
+    createdAt: Date;
 }
