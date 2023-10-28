@@ -1,6 +1,4 @@
-export interface UserBadgeModel {
-  id: number;
-}
+import { UserBadgeModel } from "./badge.model";
 
 export interface UserModel {
   name: string;
